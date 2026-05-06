@@ -6,7 +6,6 @@ import com.example.app.screen.DetailScreen
 import com.example.app.screen.HomeScreen
 import com.example.app.screen.ProfileScreen
 
-
 @Composable
 fun AppNavegation() {
 
@@ -31,7 +30,11 @@ fun AppNavegation() {
                     navController.navigate("profile")
                 },
                 GoBackHome = {
-                    navController.navigate("home")
+                    navController.navigate("home") {
+                        popUpTo("home") {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }
@@ -39,7 +42,11 @@ fun AppNavegation() {
         composable("profile") {
             ProfileScreen(
                 GoBackHome = {
-                    navController.navigate("home")
+                    navController.navigate("home") {
+                        popUpTo("home") {
+                            inclusive = true
+                        }
+                    }
                 },
                 GoBack = {
                     navController.popBackStack()
